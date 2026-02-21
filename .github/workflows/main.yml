@@ -1,0 +1,37 @@
+name: Deploy GitHub Pages (no build)
+
+on:
+  push:
+    branches: ["main"]   # change to "master" if that's your default branch
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository (includes pre-built site)
+        uses: actions/checkout@v4
+
+      # Optional but recommended: ensure Pages doesn't apply Jekyll rules
+      - name: Add .nojekyll (optional)
+        run: |
+          mkdir -p build/data
+          touch build/data/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/data
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
