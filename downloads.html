@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="Sam Owre"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="PVS Prototype Verification System" />
+<meta name="keywords" content="PVS Prototype Verification System theorem prover proving higher order logic subtypes"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="shortcut icon" href="images/pvslogo.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+  <title>PVS Downloads</title>
+  <link rel="stylesheet" type="text/css" href="css/fm-style.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body>
+
+  <div class="nav">
+<table class="relatives">
+<tr>
+<th><a href="index.html">Home</a></th>
+<th>&bull;</th>
+<th><a href="description.html">Description</a></th>
+<th>&bull;</th>
+<th><a href="documentation.html">Documentation</a></th>
+<th>&bull;</th>
+<th><a href="downloads.html">Downloads</a></th>
+<th>&bull;</th>
+<th><a href="support.html">Support</a></th>
+<th>&bull;</th>
+<th><a href="http://fm.csl.sri.com">FM&nbsp;Tools</a></th>
+</tr>
+</table>
+</div>
+
+
+  <div class="sidebar">
+<div class="localtoc">
+<p class="logo">
+<a href="#"><img width="200" height="110" src="images/pvslogo.gif" alt="PVS"/></a>
+</p>
+<h4>Download 7.1</h4>
+<ul>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86_64-Linux-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux Allegro', 'event_label' : '7.1.0'});"
+>
+Linux Allegro</a></li>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86-MacOSX-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX Allegro', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X Allegro</a> </li>
+<li><a href="downloads/pvs7.1.0-ix86_64-Linux-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux SBCL', 'event_label' : '7.1.0'});"
+>
+Linux SBCL</a></li>
+<li><a href="downloads/pvs7.1.0-ix86-MacOSX-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX SBCL', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X SBCL</a> </li>
+<li><a href="https://github.com/SRI-CSL/PVS">Github sources</a></li>
+<li><a href="downloads.html">All Downloads...</a></li>
+</ul>
+<h4><a href="downloads.html">Install 8.0 Beta</a></h4>
+<h4>NASA Additions</h4>
+<ul>
+<li><a href="https://shemesh.larc.nasa.gov/fm/pvs/PVS-library"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">NASA Library</a></li>
+<li><a href="https://github.com/nasa/vscode-pvs"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">VSCode PVS Plugin</a></li>
+</ul>
+<h4>Manuals</h4>
+<ul>
+<li><a href="doc/pvs-release-notes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Release Notes</a></li>
+<li><a href="doc/pvs-system-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">System Guide</a></li>
+<li><a href="doc/pvs-language-reference.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Language Reference</a></li>
+<li><a href="doc/pvs-prover-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Prover Guide</a></li>
+<li><a href="doc/datatypes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Datatypes</a></li>
+<li><a href="doc/interpretations.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Theory Interpretations</a></li>
+</ul>
+<h4>Patches</h4>
+<ul>
+<li><a href="pvs-patches/">List of available patches</a></li>
+<li><a href="pvs-patches/">How to install patches</a></li>
+</ul>
+</div>
+</div>
+
+  <div class="body">
+
+    <h1>PVS Downloads</h1>
+
+    <p>
+      <b>PVS 8.0 (beta) is now available for installation, see below for details.</b>
+    </p>
+    <p>
+      PVS releases are generally available with Allegro Common Lisp or SBCL.
+      Current versions are for Linux and MacOSX 64-bit machines.  If you
+      have other platforms, you may be able to use Vagrant with a Linux
+      version, use an earlier release, or contact us at
+      <a href="mailto:pvs@csl.sri.com" target="_blank">pvs@csl.sri.com</a>
+      to discuss possibilities.
+    </p>
+    <p>
+      Vagrant: any operating system that supports
+      <a href="https://www.vagrantup.com/">Vagrant</a> and
+      <a href="https://www.virtualbox.org">Virtualbox</a> (e.g., Windows)
+      should be able to run PVS 7.1 or later.  Simply download a Linux
+      version of PVS, untar it, and follow the instructions
+      in <tt>vagrant.README</tt>.
+    </p>
+    <p>
+      For versions 7.1 and below,
+      we strongly suggest getting a pre-built Allegro version, unless you
+      have concerns with the Allegro runtime click-though license, in which
+      case get one of the SBCL Lisp images.
+    </p>
+    <p>
+      <ul>
+        <li>
+          <b>Noncommercial entities</b>: you may freely download the Allegro runtime version of PVS, but you must <i> read and accept</i> the &quot;click-through&quot; license that comes up when you choose an allegro download.
+        </li>
+        <li>
+          <b>Commercial entities</b>: if you have an existing, current PVS license, simply <i> read and accept</i> the &quot;click-through&quot; license, otherwise first contact us at <a href="mailto:pvs-licensing@csl.sri.com">pvs-licensing@csl.sri.com</a>
+        </li>
+      </ul>
+    </p>
+
+    <h2>PVS 8.0 (beta) Installation</h2>
+    <p>
+      PVS 8.0 is now available for SBCL. Tar files are not currently being
+      provided, because it is difficult to make images that work in all
+      Unix-like environments. Instead, it is easiest to simply build it on your
+      system. Here are the instructions.
+      <ul>
+	<li>Use Git to Clone <a href="https://github.com/SRI-CSL/PVS"
+				      target="_blank">PVS GitHub</a>, and cd to it.</li>
+	<li>For Macs (Intel or M1), you'll need to have Xcode
+	  installed.</li>
+	<li>For Linux, you'll need GCC and Make, usually already provided</li>
+	<li>Use your package manager to install SBCL and Emacs, or make sure
+	  you have reasonably recent versions of these.</li>
+	<li>Run <tt>./configure</tt>, it will check for anything missing,
+	  e.g., curl; use your package manager to provide it and
+	  run <tt>./configure</tt> again</li>
+	<li>Run <tt>make</tt></li>
+      </ul>
+    </p>
+    <p>
+      At this point, you should be able to run <tt>./pvs</tt>, which will
+      start Emacs and show the PVS Welcome page. Let us know
+      at <a href="mailto:pvs-bugs@csl.sri.com">pvs-bugs@csl.sri.com</a> if
+      you run into problems.
+    </p>
+    <p>
+      If you want NASA's PVS library for this version, please use the following:
+      <br/>
+      <tt>git clone https://github.com/nasa/pvslib</tt>
+      <br/>
+      After cloning the library, run
+	  <br/>
+      <tt>cd pvslib; ./install-scripts</tt>
+      <br/>
+    </p>
+    <p>
+      Note that the sources include a <tt>Dockerfile</tt>, which can be used to
+      build a Docker container for use in Windows. The basic instructions
+      are in the Dockerfile itself.
+    </p>
+
+    <h2>PVS 7.1 and Earlier Installation</h2>
+    <p>
+      In PVS Version 7 and later, simply untar the file where you want, and
+      a subdirectory will be created for you.  For earlier versions you
+      should create a subdirectory, cd to it, and untar from there.
+    </p>
+    <p>
+      Then read the INSTALL file to finish installation.
+    </p>
+    <p>
+      In general, the Allegro version is faster, but does require agreeing
+      to a click-through license for Allegro, also included in the tar file as LICENSE-SRI.
+      The PVS sources are under GPL.
+    </p>
+    
+    <h3>PVS 7.1</h3>
+    <ul>
+      <li><a href="license.html?tgzfile=pvs7.1.0-ix86_64-Linux-allegro.tgz">Linux allegro 64-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs7.1.0-ix86-MacOSX-allegro.tgz">MacOSX allegro 64-bit</a></li>
+      <li><a href="downloads/pvs7.1.0-ix86_64-Linux-sbclisp.tgz">Linux SBCL 64-bit</a></li>
+      <li><a href="downloads/pvs7.1.0-ix86-MacOSX-sbclisp.tgz">MacOSX SBCL 64-bit</a></li>
+    </ul>
+    <h3>PVS 6.0</h3>
+    <ul>
+      <li><a href="license.html?tgzfile=pvs-6.0-ix86_64-Linux-allegro.tgz">Linux allegro 64-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-6.0-ix86-Linux-allegro.tgz">Linux allegro 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-6.0-ix86-MacOSX-allegro.tgz">MacOSX allegro 64-bit</a></li>
+      <li><a href="downloads/pvs-6.0-ix86_64-Linux-sbclisp.tgz">Linux SBCL 64-bit</a></li>
+      <li><a href="downloads/pvs-6.0-ix86-Linux-sbclisp.tgz">Linux SBCL 32-bit</a></li>
+      <li><a href="downloads/pvs-6.0-ix86-MacOSX-sbclisp.tgz">MacOSX SBCL 64-bit</a></li>
+    </ul>
+    
+    <h3>PVS 5.0</h3>
+    <ul>
+      <li><a href="license.html?tgzfile=pvs-5.0-ix86_64-Linux-allegro.tgz">Linux allegro 64-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-5.0-ix86-Linux-allegro.tgz">Linux allegro 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-5.0-ix86-MacOSX-allegro.tgz">MacOSX allegro 64-bit</a></li>
+      <li><a href="downloads/pvs-5.0-ix86_64-Linux-sbclisp.tgz">Linux SBCL 64-bit</a></li>
+      <li><a href="downloads/pvs-5.0-ix86-Linux-sbclisp.tgz">Linux SBCL 32-bit</a></li>
+      <li><a href="downloads/pvs-5.0-ix86-MacOSX-sbclisp.tgz">MacOSX SBCL 64-bit</a></li>
+      <li><a href="downloads/pvs-5.0-ix86-Linux-cmulisp.tgz">Linux CMULisp 32-bit</a></li>
+      <li><a href="downloads/pvs-5.0-ix86-MacOSX-cmulisp.tgz">MacOSX CMULisp 64-bit</a></li>
+    </ul>
+    
+    <h3>PVS 4.2</h3>
+    <ul>
+      <li><a href="license.html?tgzfile=pvs-4.2-ix86-Linux-allegro.tgz">Linux allegro 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-4.2-ix86-MacOSX-allegro.tgz">MacOSX allegro Intel 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-4.2-powerpc-MacOSX-allegro.tgz">MacOSX allegro PowerPC 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-4.2-sun4-SunOS5-allegro.tgz">Sun4 allegro 32-bit</a></li>
+      <li><a href="downloads/pvs-4.2-ix86-Linux-cmulisp.tgz">Linux CMULisp 32-bit</a></li>
+      <li><a href="downloads/pvs-4.2-powerpc-MacOSX-cmulisp.tgz">MacOSX PowerPC CMULisp 32-bit</a></li>
+      <li><a href="downloads/pvs-4.2-sun4-SunOS5-cmulisp.tgz">Sun4 CMULisp 32-bit</a></li>
+    </ul>
+    
+    <h3>PVS 4.1</h3>
+    <ul>
+      <li><a href="license.html?tgzfile=pvs-4.1-ix86-Linux-allegro.tgz">Linux allegro 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-4.1-ix86-MacOSX-allegro.tgz">MacOSX Intel allegro 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-4.1-powerpc-MacOSX-allegro.tgz">MacOSX PowerPC allegro 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-4.1-sun4-SunOS5-allegro.tgz">Sun4 allegro 32-bit</a></li>
+      <li><a href="downloads/pvs-4.1-ix86-Linux-cmulisp.tgz">Linux CMULisp 32-bit</a></li>
+      <li><a href="downloads/pvs-4.1-powerpc-MacOSX-cmulisp.tgz">MacOSX PowerPC CMULisp 32-bit</a></li>
+      <li><a href="downloads/pvs-4.1-sun4-SunOS5-cmulisp.tgz">Sun4 CMULisp 32-bit</a></li>
+    </ul>
+    
+    <h3>PVS 4.0</h3>
+    <ul>
+      <li><a href="license.html?tgzfile=pvs-4.0-ix86-Linux-allegro.tgz">Linux allegro 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-4.0-ix86-MacOSX-allegro.tgz">MacOSX Intel allegro 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-4.0-powerpc-MacOSX-allegro.tgz">MacOSX PowerPC allegro 32-bit</a></li>
+      <li><a href="license.html?tgzfile=pvs-4.0-sun4-SunOS5-allegro.tgz">Sun4 allegro 32-bit</a></li>
+      <li><a href="downloads/pvs-4.0-ix86-Linux-cmulisp.tgz">Linux CMULisp 32-bit</a></li>
+      <li><a href="downloads/pvs-4.0-powerpc-MacOSX-cmulisp.tgz">MacOSX PowerPC CMULisp 32-bit</a></li>
+      <li><a href="downloads/pvs-4.0-sun4-SunOS5-cmulisp.tgz">Sun4 CMULisp 32-bit</a></li>
+    </ul>
+  </div>
+  <footer class="page-footer"><hr />Last modified: <script>let lmod = new Date(document.lastModified);document.write(lmod.toDateString());</script>&nbsp; | &nbsp;Webmaster: <a href="mailto:owre@csl.sri.com">Sam Owre</a> &#149; <a href="mailto:shankar@csl.sri.com">N. Shankar</a> </footer>
+</body>
+</html>

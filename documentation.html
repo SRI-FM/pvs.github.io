@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="Sam Owre"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="PVS Prototype Verification System" />
+<meta name="keywords" content="PVS Prototype Verification System theorem prover proving higher order logic subtypes"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="shortcut icon" href="images/pvslogo.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <link rel="stylesheet" type="text/css" href="css/fm-style.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script>
+     function gtagManual() {
+       gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});
+    </script>
+    <title>PVS&trade; Documentation</title>
+  </head>
+
+  <body>
+
+    <div class="nav">
+<table class="relatives">
+<tr>
+<th><a href="index.html">Home</a></th>
+<th>&bull;</th>
+<th><a href="description.html">Description</a></th>
+<th>&bull;</th>
+<th><a href="documentation.html">Documentation</a></th>
+<th>&bull;</th>
+<th><a href="downloads.html">Downloads</a></th>
+<th>&bull;</th>
+<th><a href="support.html">Support</a></th>
+<th>&bull;</th>
+<th><a href="http://fm.csl.sri.com">FM&nbsp;Tools</a></th>
+</tr>
+</table>
+</div>
+
+
+    <div class="sidebar">
+<div class="localtoc">
+<p class="logo">
+<a href="#"><img width="200" height="110" src="images/pvslogo.gif" alt="PVS"/></a>
+</p>
+<h4>Download 7.1</h4>
+<ul>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86_64-Linux-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux Allegro', 'event_label' : '7.1.0'});"
+>
+Linux Allegro</a></li>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86-MacOSX-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX Allegro', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X Allegro</a> </li>
+<li><a href="downloads/pvs7.1.0-ix86_64-Linux-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux SBCL', 'event_label' : '7.1.0'});"
+>
+Linux SBCL</a></li>
+<li><a href="downloads/pvs7.1.0-ix86-MacOSX-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX SBCL', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X SBCL</a> </li>
+<li><a href="https://github.com/SRI-CSL/PVS">Github sources</a></li>
+<li><a href="downloads.html">All Downloads...</a></li>
+</ul>
+<h4><a href="downloads.html">Install 8.0 Beta</a></h4>
+<h4>NASA Additions</h4>
+<ul>
+<li><a href="https://shemesh.larc.nasa.gov/fm/pvs/PVS-library"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">NASA Library</a></li>
+<li><a href="https://github.com/nasa/vscode-pvs"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">VSCode PVS Plugin</a></li>
+</ul>
+<h4>Manuals</h4>
+<ul>
+<li><a href="doc/pvs-release-notes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Release Notes</a></li>
+<li><a href="doc/pvs-system-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">System Guide</a></li>
+<li><a href="doc/pvs-language-reference.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Language Reference</a></li>
+<li><a href="doc/pvs-prover-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Prover Guide</a></li>
+<li><a href="doc/datatypes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Datatypes</a></li>
+<li><a href="doc/interpretations.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Theory Interpretations</a></li>
+</ul>
+<h4>Patches</h4>
+<ul>
+<li><a href="pvs-patches/">List of available patches</a></li>
+<li><a href="pvs-patches/">How to install patches</a></li>
+</ul>
+</div>
+</div>
+
+    <div class="body">
+
+      <h1>PVS Documentation</h1>
+      
+      <p>
+	PVS has had many developments since it was first officially introduced
+	in 1996, and the manuals have not kept up.  For the most part, the
+	system is backward-compatible, so the documentation is still accurate.
+	However, many important new features of PVS are only mentioned in 
+	<a href="doc/pvs-release-notes.pdf">the Release Notes</a>.
+      </p>
+      
+      <p>
+	If you&#39;re new to PVS, we suggest you start with the 
+	<a href="doc/pvs-system-guide.pdf#Chapter2">the system guide tour</a>.
+	This will give you a quick feel for the system and it&#39;s basic
+	capabilities.  After that it depends on your goals and interests.
+      </p>
+      
+      <p>
+	There is extensive PVS documentation, divided below into sections:
+	<ul>
+	  <li><a href="#release-notes">PVS Release Notes</a></li>
+	  <li><a href="#system">PVS System</a></li>
+	  <li><a href="#language">PVS Language</a></li>
+	  <li><a href="#prover">PVS Prover</a></li>
+	  <li><a href="#eval">PVS Code Generation and Evaluation</a></li>
+	  <li><a href="#special">Specialized Tools</a></li>
+	  <li><a href="#tutorials">Tutorials</a></li>
+	  <li><a href="#examples">Examples</a></li>
+	</ul>
+      </p>
+      
+      <hr />
+
+      <h3>PVS Release Notes</h3>
+      <p class="indent">
+	<a href="doc/pvs-release-notes.pdf"
+	   id="release-notes" onclick="gtagManual()">Release Notes</a>
+	cover versions of PVS from 3.0 to 7.1, they describe new features,
+	bug fixes, etc.  It is worth skimming, as many useful new features of
+	PVS are only described in the release notes.
+      </p>
+
+      <h3 id="system" >PVS System</h3>
+      
+      <p class="indent">
+	<a href="doc/pvs-system-guide.pdf" onclick="gtagManual()">
+	  System Guide</a>
+	has a tour of the most used features of PVS, along with the
+	commands, files, and operating system interaction.  PVS was
+	originally written with an Emacs GUI, and this is described here.
+      </p>
+
+      <p class="indent">
+	<a href="http://github.com/nasa/vscode-pvs">vscode-pvs</a> is a
+	newer GUI for PVS, based on Microsoft Visual Studio code, that is
+	being actively developed by NASA as an alternative to Emacs. Both
+	GUIs will be supported in PVS in the future, so choose either or
+	both.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/cade92-pvs.ps">PVS: A Prototype Verification System</a>
+	by Sam Owre, Natarajan Shankar, and John Rushby, from CADE 11,
+	Saratoga Springs, NY, June 1992.  One of the earliest descriptions
+	of the PVS system.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/fmtrends98-pvs.ps">PVS: An Experience Report</a>
+	by Sam Owre, John Rushby, N. Shankar and David Stringer-Calvert, from
+	Applied Formal Methods---FM-Trends 98, Boppard, Germany, October 1998.
+	A brief description of PVS and a few of its applications.
+      </p>
+
+      <h3 id="language">PVS Language</h3>
+
+      <p class="indent">
+	<a href="doc/pvs-language-reference.pdf" onclick="gtagManual()">
+	  Language Reference</a>
+	The PVS specification language is based on higher-order logic, with
+	predicate subtypes. Some parts of the language are described in
+	separate manuals.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/datatypes.pdf" onclick="gtagManual()">
+	  Datatypes</a>
+	This describes the datatype mechanism in PVS, used to define
+	recursive types, such as lists and trees.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/interpretations.pdf" onclick="gtagManual()">
+	  Theory Interpretations</a>
+	This describes how to map uninterpreted types and constants from one
+	theory into another. Useful for checking that your theory is
+	consistent, and for evaluating instances of it.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/semantics.pdf" onclick="gtagManual()">
+	  PVS Semantics</a>
+	This gives the formal semantics for PVS.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/tse98.pdf">Subtypes for Specifications: Predicate
+	  Subtyping in PVS</a>, by John Rushby, Sam Owre, and N. Shankar,
+	Appears in IEEE Transactions on Software Engineering, Volume 24,
+	Number 9. September, 1998.  Describes how predicate subtyping works
+	in PVS, with many illustrative examples.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/wadt99.ps">Principles and Pragmatics of Subtyping in PVS</a>.
+	Presented at the 14th International Workshop on Algebraic Development
+	Techniques
+	<a href="http://www-lsr.imag.fr/WADT99/">WADT&#39;99</a>, September,
+	1999, Toulouse, France.  Further discussion of predicate subtyping
+	in PVS.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/tacas97.pdf">Integration in PVS: Tables, Types, and
+	  Model Checking</a>, by Sam Owre, John Rushby, and N. Shankar,
+	Appears in Tools and Algorithms for the Construction and Analysis of
+	Systems TACAS &#39;97. Enschede, The Netherlands. April, 1997.  The
+	title says what it&#39;s about.
+      </p>
+
+
+      <h3 id="prover">PVS Prover</h3>
+
+      <p class="indent">
+	<a href="doc/pvs-prover-guide.pdf" onclick="gtagManual()">
+	  Prover Guide</a>
+	Describes the proof checker in detail, though the release notes
+	should be consulted for newer commands as well as some new strategy
+	writing information.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/ProofLite-4.2.pdf" onclick="gtagManual()">
+	  ProofLite</a>
+	Allows batch proving and proof scripting, enabling a semi-literate
+	proving style, where specification and proof scripts can be kept in
+	the same file. This is intended for non-expert users of PVS.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/extrategies.pdf" onclick="gtagManual()">
+	  Real Automation in the Field</a>
+	Describes a built-in package of PVS strategies that supports
+	automation of non-linear arithmetic. In particular, it includes a
+	semi-decision procedure for the field of real numbers and a strategy
+	for cancellation of common terms.
+      </p>
+
+      <p class="indent">
+	<a href="doc/manip-guide.pdf" onclick="gtagManual()">
+	  Manip Guide</a></h4>
+	Provides an approach to tactic-based proving for improved
+	interactive deduction. The built-in Manip package includes a set of
+	strategies (tactics) and support functions. Although it was designed
+	originally to reduce the tedium of low-level arithmetic
+	manipulation, many of its features are suitable as general-purpose
+	prover utilities. Besides strategies aimed at algebraic
+	simplification of real-valued expressions, Manip includes
+	term-access techniques applicable in arbitrary settings.
+      </p>
+
+      <p class="indent">
+	<a href="doc/strata03.pdf">Writing PVS Proof Strategies</a>
+	(<a href="doc/strata03-slides.pdf">Slides</a>)
+	by Sam Owre and N. Shankar, from
+	<a href="http://research.nianet.org/fm-at-nia/STRATA2003/">STRATA 2003</a>,
+	Rome, Italy, September 2003.  Gives details of the PVS strategies
+	mechanism, as well as many pragmatic examples.
+      </p>
+      
+      <h3 id="eval">PVS Code Generation and Evaluation</h3>
+      <p>
+	Much of the PVS language is executable, and this is taken advantage
+	of by translations to Lisp, C, and Clean.  The Lisp translation was
+	the first, and is also referred to as the <i>Ground Evaluator</i>.
+	See <a href="eval.html">the ground evaluator</a> for more details.
+      </p>
+      
+      <p class="indent">
+	<a href="https://shemesh.larc.nasa.gov/fm/pvs/PVSio/">PVSio
+	Animation</a></h4> PVSio extends the ground evaluator with a
+	predefined library of imperative programming language features
+	such as side effects, unbounded loops, input/output operations,
+	floating point arithmetic, exception handling, pretty printing,
+	and parsing. The PVSio input/output library is implemented via
+	semantic attachments.
+      </p>
+
+      <p class="indent">
+	<a href="doc/eval-report.pdf">
+	  Evaluating, Testing, and Animating PVS Specifications</a>
+	by Judy Crow, Sam Owre, John Rushby, N. Shankar, and Dave
+	Stringer-Calvert, CSL Technical Report, March 30, 2001.  Describes
+	many examples using the ground evaluator.
+      </p>
+      
+      <p class="indent">
+	<a href="doc/5-Owre.pdf">Random Testing in PVS</a>
+	(<a href="doc/Owre-randomtest.pdf">Slides</a>)
+	by Sam Owre, from <a href="http://fm.csl.sri.com/AFM06/">AFM
+	  2006</a>, Seattle, WA, August 2006.  Similar to QuickCheck for
+	Haskell, random testing in PVS allows one to look for
+	counterexamples.  This can help, for example, to refine hypotheses,
+	before wasting time trying to prove an invalid formula.
+      </p>
+
+      <h3 id="special">PVS Specialized Tools</h3>
+
+      <p>
+	The following are a part of PVS, but of rather specialized interest.
+      </p>
+      
+      <p class="indent">
+	<a href="abstract.html">Predicate Abstraction in PVS</a>
+      </p>
+
+      <p class="indent">
+	<a href="ws1s.html">WS1S</a> - PVS with Mona
+      </p>
+
+      <hr />
+
+      <h2 id="tutorials">PVS Tutorials</h2>
+      <p>
+	In general, the specs for these tutorials are included in the latest PVS
+	installations, under the <tt>Examples</tt> directory.
+	<p class="indent">
+	  <a href="doc/wift-tutorial.pdf">
+	    The standard introductory tutorial to PVS (WIFT)</a>
+	  [<a href="https://github.com/SRI-CSL/PVS/tree/master/Examples/wift-tutorial/">
+	    Examples/wift-tutorial/</a>]:
+	  is a good place to start.  It provides an introductory example and
+	  a tutorial. It is intended to provide enough information to get
+	  you started using PVS, and to help you appreciate the capabilities
+	  of the system and the purposes for which it is suitable.
+	</p>
+	
+	<p class="indent">
+	  <a href="doc/csl-95-10.ps">A less elementary
+	    version of Ricky Butler&#39;s "Elementary Tutorial"</a>
+	  [<a href="https://github.com/SRI-CSL/PVS/tree/master/Examples/elementary-tutorial/">
+	    Examples/elementary-tutorial/</a>]
+	  introduces some of the more powerful strategies provided by the
+	  PVS theorem prover. It consists of two parts: the first extends a
+	  previous tutorial by Ricky Butler demonstrating how his proofs may
+	  be performed in a more automated manner; the second uses the
+	  <i>unwinding theorem</i> from the noninterference formulation of
+	  security to introduce theorem-proving strategies for
+	  induction. This tutorial also shows how specifications and proofs
+	  may be better presented using the LaTeX and PostScript generating
+	  facilities of PVS.
+	</p>
+	
+	<p class="indent">
+	  <a href="doc/fme96-tutorial.ps">A tutorial
+	    on some advanced features of PVS</a>
+	  [<a href="https://github.com/SRI-CSL/PVS/tree/master/Examples/fme96/">
+	    Examples/fme96/</a>]
+	  given at FME 96.  This covers predicate subtypes and judgements in
+	  detail.
+	</p>
+	
+	<p class="indent">
+	  <a href="doc/forte97.ps">Tutorial on
+	    Specification, Proof Checking, and Model Checking for
+	    Protocols and Distributed Systems with PVS</a>
+	  [<a href="https://github.com/SRI-CSL/PVS/tree/master/Examples/forte97-tutorial/">
+	    Examples/forte97-tutorial/</a>]
+	  given at FORTE/PSTV 97.  Analyzes a simple cache-coherence protocol
+	  using a combination of theorem proving and model checking.
+	</p>
+	
+	<p class="indent">
+	  <a href="doc/fm99tut.pdf">PVS Tutorial, FM99</a>
+	  [<a href="https://github.com/SRI-CSL/PVS/tree/master/Examples/fm99/">
+	    Examples/fm99/</a>] given at FM 99.  A simple tutorial illustrating
+	  recursion, higher-order features, and abstract datatypes of PVS.
+	</p>
+
+	<h2 id="examples">PVS Examples</h2>
+	
+        <p>
+          There are many sources of PVS Examples.  The PVS prelude offers
+          foundational theories, and can easily be viewed using
+	  <tt>M-x view-prelude-theory</tt>.
+	  Another useful source of examples is in the
+	  <a href="https://github.com/nasa/pvslib">PVS Library</a>
+	  maintained by NASA.
+	</p>
+	
+	<p class="indent">
+	  <a href="doc/HWVerifinPVSdocument.pdf">
+	    Hardware Verification Using PVS</a>
+	  [<a href="https://github.com/SRI-CSL/PVS/tree/master/Examples/HWVbookchap/">
+	    Examples/HWVbookchap/</a>]
+	  includes examples that appear in the chapter Hardware Verification
+	  Using PVS in the book Formal Hardware Verification Methods and
+	  Systems in Comparison, Edited by Thomas Kropf, Springer, LNCS 1287.
+	  The examples are: Arbiter, Blackjack, Detect110, Fir_filter5,
+	  Pipeline, Singlepulser, and Tamarack.
+	</p>
+	
+	<p class="indent">
+	  <a href="doc/csl-95-12.ps">Tabular
+	    specifications and model-checking SCR transition relations</a>
+	  [<a href="https://github.com/SRI-CSL/PVS/tree/master/Examples/pvs-tables/">
+	    Examples/pvs-tables/</a>]
+	  describes PVS&#39;s capabilities for representing tabular specifications
+	  of the kind advocated by Parnas and others, and shows how PVS&#39;s Type
+	  Correctness Conditions (TCCs) are used to ensure certain
+	  well-formedness properties.
+	</p>
+	
+	<p class="indent">
+	  <a href="doc/csl-92-1.ps">Byzantine Agreement</a>
+	  [<a href="https://github.com/SRI-CSL/PVS/tree/master/Examples/byzantine/">
+	    Examples/byzantine/</a>]
+	  describes the formal specification and verification of an algorithm
+	  for Interactive Consistency based on the Oral Messages algorithm for
+	  Byzantine Agreement.
+	</p>
+	
+	<p class="indent">
+	  <a href="doc/Ag-report.pdf">Ag in PVS</a>
+	  [<a href="https://github.com/SRI-CSL/PVS/tree/master/Examples/AgExample/">
+	    Examples/AgExample/</a>]
+	  Ag is a specification language presented as a syntactic sugaring of
+	  the First-Order Dynamic Logic of Fork Algebras. We show how the
+	  higher-order logic theorem prover PVS can be used to build a
+	  semantic framework for reasoning about specifications written in Ag
+	  by encoding the semantics within the PVS language.  We then
+	  illustrate how this semantic embedding can be used by means of a
+	  case study of a cache system specification.
+	</p>
+	
+    </div>
+    <footer class="page-footer"><hr />Last modified: <script>let lmod = new Date(document.lastModified);document.write(lmod.toDateString());</script>&nbsp; | &nbsp;Webmaster: <a href="mailto:owre@csl.sri.com">Sam Owre</a> &#149; <a href="mailto:shankar@csl.sri.com">N. Shankar</a> </footer>
+  </body>
+</html>
+

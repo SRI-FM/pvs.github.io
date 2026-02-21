@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="Sam Owre"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="PVS Prototype Verification System" />
+<meta name="keywords" content="PVS Prototype Verification System theorem prover proving higher order logic subtypes"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="shortcut icon" href="images/pvslogo.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <link rel="stylesheet" type="text/css" href="css/fm-style.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>WS1S</title>
+  </head>
+
+  <body>
+    <div class="nav">
+<table class="relatives">
+<tr>
+<th><a href="index.html">Home</a></th>
+<th>&bull;</th>
+<th><a href="description.html">Description</a></th>
+<th>&bull;</th>
+<th><a href="documentation.html">Documentation</a></th>
+<th>&bull;</th>
+<th><a href="downloads.html">Downloads</a></th>
+<th>&bull;</th>
+<th><a href="support.html">Support</a></th>
+<th>&bull;</th>
+<th><a href="http://fm.csl.sri.com">FM&nbsp;Tools</a></th>
+</tr>
+</table>
+</div>
+
+    <div class="sidebar">
+<div class="localtoc">
+<p class="logo">
+<a href="#"><img width="200" height="110" src="images/pvslogo.gif" alt="PVS"/></a>
+</p>
+<h4>Download 7.1</h4>
+<ul>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86_64-Linux-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux Allegro', 'event_label' : '7.1.0'});"
+>
+Linux Allegro</a></li>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86-MacOSX-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX Allegro', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X Allegro</a> </li>
+<li><a href="downloads/pvs7.1.0-ix86_64-Linux-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux SBCL', 'event_label' : '7.1.0'});"
+>
+Linux SBCL</a></li>
+<li><a href="downloads/pvs7.1.0-ix86-MacOSX-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX SBCL', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X SBCL</a> </li>
+<li><a href="https://github.com/SRI-CSL/PVS">Github sources</a></li>
+<li><a href="downloads.html">All Downloads...</a></li>
+</ul>
+<h4><a href="downloads.html">Install 8.0 Beta</a></h4>
+<h4>NASA Additions</h4>
+<ul>
+<li><a href="https://shemesh.larc.nasa.gov/fm/pvs/PVS-library"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">NASA Library</a></li>
+<li><a href="https://github.com/nasa/vscode-pvs"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">VSCode PVS Plugin</a></li>
+</ul>
+<h4>Manuals</h4>
+<ul>
+<li><a href="doc/pvs-release-notes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Release Notes</a></li>
+<li><a href="doc/pvs-system-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">System Guide</a></li>
+<li><a href="doc/pvs-language-reference.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Language Reference</a></li>
+<li><a href="doc/pvs-prover-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Prover Guide</a></li>
+<li><a href="doc/datatypes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Datatypes</a></li>
+<li><a href="doc/interpretations.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Theory Interpretations</a></li>
+</ul>
+<h4>Patches</h4>
+<ul>
+<li><a href="pvs-patches/">List of available patches</a></li>
+<li><a href="pvs-patches/">How to install patches</a></li>
+</ul>
+</div>
+</div>
+    <div class="body">
+      <h1>WS1S</h1>
+
+      <p>
+	<b>syntax:</b> <tt>(ws1s &amp;optional (fnums *) (examples? t)
+	  (automaton? nil) (traces? nil) (verbose? t) (defs !)
+	  theories rewrites exclude)</tt>
+      </p>
+      <p>
+	<b>effect: </b>This strategy implements a decision procedure for the Weak Second-order
+        monadic logic of 1 Successor (WS1S).  The supported fragment of WS1S
+        includes boolean expression, arithmetic on the natural numbers restricted
+        to addition/subraction with/from a constant, and operations on finite sets
+        over the naturals like union, intersection, set difference, addition and
+        removal of a natural.  Predicates include arithmetic comparisons
+        like <tt>&lt</tt>, <tt>&lt=</tt>, <tt>&gt</tt>, <tt>&gt=</tt>,
+	equality, disequality, the subset relation,
+        and membership in the form <tt>P(i)</tt>.  There is quantification over the booleans,
+        the natural numbers, finite sets of naturals, and predicate subtypes of the
+        aforementioned types built from formulas in the set just described.
+        Furthermore, natural numbers, and finite sets of natural numbers may also
+        be described using the <tt>the</tt> operator; e.g. ripple-carry addition may be
+        defined as:
+	<pre>
+          +(P, Q: finite_set[nat]): finite_set[nat] = 
+            the({R: finite_set[nat] | 
+               EXISTS (C: finite_set[nat]): NOT(C(0)) AND
+                 FORALL (t: nat):
+                  (C(t + 1) = ((P(t) AND Q(t)) OR
+                               (P(t) AND C(t)) OR
+                               (Q(t) AND C(t))))
+                  AND (R(t) = P(t) = Q(t) = C(t))});
+	</pre>
+        Using this definition, lemmas such as
+	<pre>
+          plus_assoc: LEMMA
+             FORALL (X, Y, Z: finite_set[nat]):
+                X + (Y + Z) = (X + Y) + Z
+	</pre>
+        are proven to be valid by simply calling <tt>(WS1S)</tt>.
+      </p>
+      <p>
+        In a first step, the WS1S strategy rewrites the
+        formulas specifed by <tt>FNUMS</tt>.  The resulting formulas are then translated,
+        using the rule <tt>WS1S-SIMP</tt>, to an automaton which recognizes the language
+        of their interpretations.  Hereby, subformulas that do not appear
+        to be in the WS1S fragment are abstracted away by introducing
+        new parameters.  If the final automaton recognizes the full set,
+        the <tt>FNUMS</tt> formulas are replaced by <tt>TRUE</tt>; otherwise, these formulas are
+        left unchanged.
+      </p>
+      <p>
+        The <tt>DEFS</tt>, <tt>THEORIES</tt>, <tt>REWRITES</tt>, and <tt>EXCLUDE</tt> arguments are used to
+        install rewrites.  For a precise description of their meaning see
+        e.g. <tt>AUTO-REWRITE-THEORY</tt> or <tt>INSTALL-REWRITES</tt>.
+      </p>
+      <p>
+        In case where the formulae specified by <tt>FNUMS</tt> are neither valid nor unsatisfiable
+        both a witness and a counterexample are displayed if the
+        flag <tt>EXAMPLES?</tt> is set.  Hereby, expressions are displayed for
+        both the free variables in the <tt>FNUMS</tt> formulas and the newly introduced
+        abstraction parameters.  An alternative, trace-oriented view of the
+        examples are displayed if the <tt>TRACES?</tt> flag is on.
+      </p>
+      <p>       
+        With the <tt>AUTOMATON?</tt> flag turned on, the constructed automaton is
+        displayed.
+      </p>
+      <p>
+        Translation messages are being displayed whenever the flag <tt>VERBOSE?</tt>
+        is set to <tt>T</tt>.  Messages like "Abstracting..." indicate the introduction
+        of a new parameter, and  "Not abstractable ..." indicates that there
+        is a free occurrences of a bound variables in the current subformula.
+        In this case, the translation process aborts.  A second source of
+        failure in the translation process comes from quantifiers which
+        contain bindings not included in WS1S.  In these cases, a message
+        like "Not in ws1s: ... in ..." is displayed and the translation process
+        aborts.
+      </p>
+      <p>
+        These messages may be helpful in detecting expressions that
+        are not known to be in WS1S by the translator.  In these cases,
+        it might be useful to decorate these expressions with appropriate
+        type coercions (e.g. <tt>{x: nat | x = 1 OR x = 2} :: finite_set[nat]</tt>)
+        to support the translation process.
+      </p>
+      <p>
+	<b>usage:</b> <tt>(ws1s 1 :examples? nil :verbose?? nil)</tt>
+	Tries to reduce formula 1 to true; suppresses both translation
+	messages and the display of a witness and a counterexample in
+	case this formula is neither valid nor satisfiable.
+      </p>
+      <p>      
+	<b>errors:</b> "Formula ... not in WS1S"<br/>
+        The translation process could not construct a DFA for
+        the formula ...
+      </p>
+      <p>
+	<b>notes:</b> The WS1S strategy uses the libraries of Mona to construct
+	DFAs.  Mona was developed at BRICS -
+	see <a href="http://www.brics.dk/~mona">http://www.brics.dk/~mona</a> for details.
+      </p>
+      
+    </div>
+    <div class="footer">
+      <footer class="page-footer"><hr />Last modified: <script>let lmod = new Date(document.lastModified);document.write(lmod.toDateString());</script>&nbsp; | &nbsp;Webmaster: <a href="mailto:owre@csl.sri.com">Sam Owre</a> &#149; <a href="mailto:shankar@csl.sri.com">N. Shankar</a> </footer>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="Sam Owre"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="PVS Prototype Verification System" />
+<meta name="keywords" content="PVS Prototype Verification System theorem prover proving higher order logic subtypes"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="shortcut icon" href="images/pvslogo.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+  <link rel="stylesheet" type="text/css" href="css/fm-style.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <!-- <script type="text/javascript" src="js/materialize.js"></script> -->
+  <!-- @ ANALYTIC@ -->
+  <!-- @ TIMINGS@ -->
+  <title>PVS Description</title>
+</head>
+
+<!-- <body onload="pvs_load_report()"> -->
+<body>
+  <div class="nav">
+<table class="relatives">
+<tr>
+<th><a href="index.html">Home</a></th>
+<th>&bull;</th>
+<th><a href="description.html">Description</a></th>
+<th>&bull;</th>
+<th><a href="documentation.html">Documentation</a></th>
+<th>&bull;</th>
+<th><a href="downloads.html">Downloads</a></th>
+<th>&bull;</th>
+<th><a href="support.html">Support</a></th>
+<th>&bull;</th>
+<th><a href="http://fm.csl.sri.com">FM&nbsp;Tools</a></th>
+</tr>
+</table>
+</div>
+
+  <div class="sidebar">
+<div class="localtoc">
+<p class="logo">
+<a href="#"><img width="200" height="110" src="images/pvslogo.gif" alt="PVS"/></a>
+</p>
+<h4>Download 7.1</h4>
+<ul>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86_64-Linux-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux Allegro', 'event_label' : '7.1.0'});"
+>
+Linux Allegro</a></li>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86-MacOSX-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX Allegro', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X Allegro</a> </li>
+<li><a href="downloads/pvs7.1.0-ix86_64-Linux-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux SBCL', 'event_label' : '7.1.0'});"
+>
+Linux SBCL</a></li>
+<li><a href="downloads/pvs7.1.0-ix86-MacOSX-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX SBCL', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X SBCL</a> </li>
+<li><a href="https://github.com/SRI-CSL/PVS">Github sources</a></li>
+<li><a href="downloads.html">All Downloads...</a></li>
+</ul>
+<h4><a href="downloads.html">Install 8.0 Beta</a></h4>
+<h4>NASA Additions</h4>
+<ul>
+<li><a href="https://shemesh.larc.nasa.gov/fm/pvs/PVS-library"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">NASA Library</a></li>
+<li><a href="https://github.com/nasa/vscode-pvs"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">VSCode PVS Plugin</a></li>
+</ul>
+<h4>Manuals</h4>
+<ul>
+<li><a href="doc/pvs-release-notes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Release Notes</a></li>
+<li><a href="doc/pvs-system-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">System Guide</a></li>
+<li><a href="doc/pvs-language-reference.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Language Reference</a></li>
+<li><a href="doc/pvs-prover-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Prover Guide</a></li>
+<li><a href="doc/datatypes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Datatypes</a></li>
+<li><a href="doc/interpretations.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Theory Interpretations</a></li>
+</ul>
+<h4>Patches</h4>
+<ul>
+<li><a href="pvs-patches/">List of available patches</a></li>
+<li><a href="pvs-patches/">How to install patches</a></li>
+</ul>
+</div>
+</div>
+  <div class="body">
+    <h1>PVS Description</h1>
+    <p>
+      PVS is a large, complex system; here we give a high level
+      description of the language, prover, user interface, and other
+      features of PVS.  Details may be found in
+      the <a href="documentation.html">documentation</a>
+    </p>
+    <h2>PVS Language</h2>
+    <p>
+      The specification language of PVS is based on classical, typed
+      higher-order logic. The base types include uninterpreted types that
+      may be introduced by the user, and built-in types such as the
+      booleans, integers, reals, and the ordinals up to epsilon_0; the
+      type-constructors include functions, sets, tuples, records,
+      enumerations, and inductively-defined abstract data types, such as
+      lists and binary trees, and coinductively-defined abstract data
+      types such as streams. Predicate subtypes and dependent types can be
+      used to introduce constraints, such as the type of prime numbers or
+      order-preserving maps. These constrained types may incur proof
+      obligations (called type-correctness conditions or TCCs) during
+      typechecking, but greatly increase the expressiveness and
+      naturalness of specifications. In practice, most of the obligations
+      are discharged automatically by the theorem prover. PVS
+      specifications are organized into parameterized theories that may
+      contain assumptions, definitions, axioms, and theorems. Parameters
+      can include constants, types, and theory instances. Theory
+      interpretations are used to instantiate the declared types and
+      constants in a theory with definitions. Theory interpretations can
+      be used for exhibiting models for an axiomatic theory and to refine
+      a abstract theory in terms of a concrete one. Definitions are
+      guaranteed to be conservative extensions; to ensure this, recursive
+      function definitions generate termination proof
+      obligations. Inductively-defined relations are also supported. PVS
+      expressions provide the usual arithmetic and logical operators,
+      function application, lambda abstraction, and quantifiers, within a
+      natural syntax. Names may be freely overloaded, including those of
+      the built-in operators such as AND and +. Tabular specifications of
+      the kind advocated by Parnas are supported, with automated checks
+      for disjointness and coverage of conditions. An extensive prelude of
+      built-in theories provides hundreds of useful definitions and
+      lemmas; user-contributed libraries provide many more.
+    </p>
+
+    <h2>Verification with the PVS Theorem Prover</h2>
+    <p>
+      The PVS theorem prover provides a collection of powerful primitive
+      inference procedures that are applied interactively under user
+      guidance within a sequent calculus framework. The primitive inferences
+      include propositional and quantifier rules, induction, rewriting,
+      simplification using decision procedures for equality and linear
+      arithmetic, data and predicate abstraction, and symbolic model
+      checking. The implementations of these primitive inferences are
+      optimised for large proofs: for example, propositional simplification
+      uses BDDs, and auto-rewrites are cached for efficiency. User-defined
+      procedures can combine these primitive inferences to yield
+      higher-level proof strategies. There is a synergistic interaction
+      between the PVS language features and the prover so that the type
+      information associated with a term is exploited by the inference
+      mechanisms, and conversely, the automation in the prover is helpful in
+      automatically discharging TCCs. Proofs yield scripts that can be
+      edited, attached to additional formulas, and rerun. This allows many
+      similar theorems to be proved efficiently, permits proofs to be
+      adjusted economically to follow changes in requirements or design, and
+      encourages the development of readable proofs.
+    </p>
+    <p>
+      PVS includes a BDD-based decision procedure for the relational
+      mu-calculus and thereby provides an experimental integration between
+      theorem proving and CTL model checking. PVS has recently been
+      extended to use the Yices SMT solver as an endgame prover and an
+      infinite-state bounded model checker, the PVSio framework for
+      evaluating ground PVS expressions, and a random testing capability
+      that can be used during proofs.
+    </p>
+    
+    <h2>PVS Proving in Batch Mode</h2>
+    <p>
+      PVS provides a <a href="doc/ProofLite-4.2.pdf">suite of tools</a>
+      for non-interactive proof checking. These tools enable a
+      semi-literate proving style where specification and proof scripts
+      reside in the same file (as it is done in Coq and other proof
+      assistants).
+    </p>
+    <p>
+      These tools include:
+      <ul>
+	<li>A proof scripting language for writing proofs within pvs files</li>
+	<li>Emacs commands for installing proof scripts in proofs and for extracting proof scripts from proofs</li>
+	<li>The command line utility proveit to re-prove theories in batch mode</li>
+	<li>The command line utility provethem to re-prove libraries
+	  (collection of theories) in batch mode</li>
+      </ul>
+    </p>
+    
+    <h2>PVSio Animation Environment</h2>
+    <p>
+      <a href="https://shemesh.larc.nasa.gov/fm/pvs/PVSio" target="_blank">PVSio</a>
+      is the animation environment of PVS, provided by NASA Langley. It is
+      built into PVS, on top of the ground evaluator, which generates Common
+      Lisp code from PVS functional specifications to evaluate ground
+      expressions within the underlying PVS Common Lisp environment. PVSio
+      provides a predefined library of imperative programming language
+      features such as side effects, unbounded loops, input/output
+      operations, floating point arithmetic, exception handling, pretty
+      printing, and parsing.
+    </p>
+    <p> The current version of PVSio provides: </p>
+    <div>
+      <ol>
+	<li>A standard library of semantic attachments.</li>
+	<li>A high level interface for writing user-defined semantic attachments.</li>
+	<li>A simpler Emacs interface and a stand alone Emacs-free interface to the ground evaluator.</li>
+	<li>The proof commands <em>eval-expr</em>
+	and <em>eval-formula</em> that safely integrate the ground
+	evaluator into the PVS theorem prover. These proof rules use the
+	efficient Common Lisp code generated by the ground evaluator to
+	simplify ground expressions in sequent formulas.</li>
+      </ol>
+    </div>
+    
+    <h2>PVSio-web Prototyping Environment</h2>
+    <p>
+      <a href="http://www.pvsioweb.org/" target="_blank">PVSio-web</a>
+      is a graphical environment that transforms the animation capabilities
+      of the standard PVS theorem proving system with a sophisticated
+      graphical front-end allowing interactive (human-computer) systems
+      modelling and prototyping. This is not built in to PVS, see the above
+      link for installation instructions.  Using PVSio-web, one can generate
+      and evaluate realistic interactive prototypes from formal
+      models. PVSio-web has been successfully used over the last two years
+      for analysing commercial medical devices, and has been used to create
+      training material for device developers and device users. For
+      safety-critical medical device design, PVSio-web has been used with
+      formal methods experts and with non-technical end users, including
+      doctors and nurses.
+    </p>
+  </div> <!-- end body -->
+  <div class="footer">
+    <footer class="page-footer"><hr />Last modified: <script>let lmod = new Date(document.lastModified);document.write(lmod.toDateString());</script>&nbsp; | &nbsp;Webmaster: <a href="mailto:owre@csl.sri.com">Sam Owre</a> &#149; <a href="mailto:shankar@csl.sri.com">N. Shankar</a> </footer>
+  </div>
+</body>
+</html>

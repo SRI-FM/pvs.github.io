@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="Sam Owre"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="PVS Prototype Verification System" />
+<meta name="keywords" content="PVS Prototype Verification System theorem prover proving higher order logic subtypes"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="shortcut icon" href="images/pvslogo.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <link rel="stylesheet" type="text/css" href="css/fm-style.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>Reporting PVS&trade; Bugs</title>
+  </head>
+
+  <body>
+    <div class="nav">
+<table class="relatives">
+<tr>
+<th><a href="index.html">Home</a></th>
+<th>&bull;</th>
+<th><a href="description.html">Description</a></th>
+<th>&bull;</th>
+<th><a href="documentation.html">Documentation</a></th>
+<th>&bull;</th>
+<th><a href="downloads.html">Downloads</a></th>
+<th>&bull;</th>
+<th><a href="support.html">Support</a></th>
+<th>&bull;</th>
+<th><a href="http://fm.csl.sri.com">FM&nbsp;Tools</a></th>
+</tr>
+</table>
+</div>
+
+    <div class="sidebar">
+<div class="localtoc">
+<p class="logo">
+<a href="#"><img width="200" height="110" src="images/pvslogo.gif" alt="PVS"/></a>
+</p>
+<h4>Download 7.1</h4>
+<ul>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86_64-Linux-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux Allegro', 'event_label' : '7.1.0'});"
+>
+Linux Allegro</a></li>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86-MacOSX-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX Allegro', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X Allegro</a> </li>
+<li><a href="downloads/pvs7.1.0-ix86_64-Linux-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux SBCL', 'event_label' : '7.1.0'});"
+>
+Linux SBCL</a></li>
+<li><a href="downloads/pvs7.1.0-ix86-MacOSX-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX SBCL', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X SBCL</a> </li>
+<li><a href="https://github.com/SRI-CSL/PVS">Github sources</a></li>
+<li><a href="downloads.html">All Downloads...</a></li>
+</ul>
+<h4><a href="downloads.html">Install 8.0 Beta</a></h4>
+<h4>NASA Additions</h4>
+<ul>
+<li><a href="https://shemesh.larc.nasa.gov/fm/pvs/PVS-library"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">NASA Library</a></li>
+<li><a href="https://github.com/nasa/vscode-pvs"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">VSCode PVS Plugin</a></li>
+</ul>
+<h4>Manuals</h4>
+<ul>
+<li><a href="doc/pvs-release-notes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Release Notes</a></li>
+<li><a href="doc/pvs-system-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">System Guide</a></li>
+<li><a href="doc/pvs-language-reference.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Language Reference</a></li>
+<li><a href="doc/pvs-prover-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Prover Guide</a></li>
+<li><a href="doc/datatypes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Datatypes</a></li>
+<li><a href="doc/interpretations.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Theory Interpretations</a></li>
+</ul>
+<h4>Patches</h4>
+<ul>
+<li><a href="pvs-patches/">List of available patches</a></li>
+<li><a href="pvs-patches/">How to install patches</a></li>
+</ul>
+</div>
+</div>
+    <div class="body">
+      <h1>Reporting PVS&trade; Bugs</h1>
+
+      <p>
+	If you run into a bug using PVS, you can try searching through
+	the <a href="documentation.html">system manuals</a>, or the
+	recently created
+	<a href="https://groups.google.com/g/pvs-group">PVS Google
+	  Groups</a> page.
+      </p>
+      <p>
+	Please don't waste your valuable time deciding if it is a real
+	bug, or trying to minimize it.  Even if it is a misunderstanding
+	on your part, it indicates that the documentation should be
+	improved.  The main thing is to let us know about the bug, and
+	ideally send enough information that we can recreate it;
+	we will contact you if we need more.
+      </p>
+      <p>
+	Typically we need the specification and proof files to recreate
+	the problem.  Under Emacs, <tt>M-x dump-pvs-files</tt> generates a
+	single file that can be sent to us, but you can also simply create
+	a tar or zip file.  If the specifications depend on libraries
+	(other than the NASA pvslib), you should send those as well, in
+	separate dump/tar/zip files.  Note that you should probably
+	exclude the <tt>pvsbin</tt> sudirectory, unless that is relevant
+	to the bug, as many mailers have size restrictions.  If it's still
+	too large, you can use the <tt>split</tt> command (part of
+	Linux/MacOSX) to break the file into smaller chunks and send them
+	separately.
+      </p>
+      <p>
+	The information should be sent to us at
+	<a href="mailto:pvs-bugs@csl.sri.com">pvs-bugs@csl.sri.com</a>.
+      </p>
+      <p>
+	<b>Note:</b> we tend to be open about bugs reported to us, and may
+	use them for regression testing, or as examples for topics of
+	discussion, FAQs, etc.  Please tell us if anything you send is
+	confidential, and we will make sure to treat your information
+	accordingly.
+      </p>
+
+    </div>
+    <div class="footer">
+      <footer class="page-footer"><hr />Last modified: <script>let lmod = new Date(document.lastModified);document.write(lmod.toDateString());</script>&nbsp; | &nbsp;Webmaster: <a href="mailto:owre@csl.sri.com">Sam Owre</a> &#149; <a href="mailto:shankar@csl.sri.com">N. Shankar</a> </footer>
+    </div>
+  </body>
+</html>
+

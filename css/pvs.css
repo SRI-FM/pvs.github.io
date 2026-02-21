@@ -1,0 +1,382 @@
+.header { grid-area: header;
+	  width: 100%;
+	  border: 1px solid black;
+	  align-content: center; }
+.header img { width: 80%;
+	      display: block;
+	      margin-left: auto;
+	      margin-right: auto; }
+.main { grid-area: main; }
+.sidebar { grid-area: right; }
+.footer { grid-area: footer; }
+
+table.relatives { 
+  /* background-color: #e5e5e5; */
+  /* color: #1A41A8; */
+  width: 100%;
+  border: 1px solid #aaa;
+  font-weight: bold;
+  text-align: center;
+}
+
+table.relatives td th {
+ height: 2em;
+}
+
+table.relatives a:link { text-decoration: none; }
+table.relatives a:visited { text-decoration: none; }
+table.relatives a:active { text-decoration: none; }
+
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    'header header header header header'
+    'main main main main right'
+    'footer footer footer footer footer';
+  grid-gap: 10px;
+  /* background-color: #2196F3; */
+  padding: 10px;
+}
+
+.grid-container > div {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  /* text-align: center; */
+  padding: 20px 0;
+  /* font-size: 30px; */
+}
+/* Style The Dropdown Button */
+/* .dropbtn { */
+/*   /\* background-color: #4CAF50; *\/ */
+/*   /\* color: white; *\/ */
+/*   padding: 6px; */
+/*   /\* font-size: 16px; *\/ */
+/*   /\* border: none; *\/ */
+/*   cursor: pointer; */
+/* } */
+
+/* /\* The container <div> - needed to position the dropdown content *\/ */
+/* .dropdown { */
+/*   position: relative; */
+/*   display: block; */
+/*   padding: 10px; */
+/*   width: 100%; */
+/* } */
+
+/* /\* Dropdown Content (Hidden by Default) *\/ */
+/* .dropdown-content { */
+/*   display: none; */
+/*   position: absolute; */
+/*   background-color: #f9f9f9; */
+/*   min-width: 160px; */
+/*   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+/*   z-index: 1; */
+/* } */
+
+/* /\* Links inside the dropdown *\/ */
+/* .dropdown-content a { */
+/*   color: black; */
+/*   padding: 12px 16px; */
+/*   text-decoration: none; */
+/*   display: block; */
+/* } */
+
+/* /\* Change color of dropdown links on hover *\/ */
+/* .dropdown-content a:hover {background-color: #f1f1f1} */
+
+/* /\* Show the dropdown menu on hover *\/ */
+/* .dropdown:hover .dropdown-content { */
+/*   display: block; */
+/* } */
+
+/* * { */
+/*   margin: 0; */
+/*   padding: 0; */
+/* } */
+
+/* body { */
+/*   -webkit-font-smoothing:antialiased; */
+/*   font: 300 15px/1.5 "Roboto", "HelveticaNeue", "Helvetica Neue", helvetica, arial, sans-serif; */
+/*   background-color: #fff; *\/ */
+/*   color: black; */
+/*   margin: 75px; */
+/*   line-height: 150%; */
+/*   text-align: left; */
+/*   padding-left: 20px; */
+/*   padding-right: 20px; */
+/*   margin-top: 10px; */
+/*   margin-bottom: 0px; */
+/*   margin-left: auto; */
+/*   margin-right: auto; */
+/*   min-width: 740px; */
+/*   max-width: 1080px; */
+/* } */
+
+h1 {
+  margin: 0;
+  padding: 0.7em 0 0.3em 0;
+  font-size: 1.5em;
+  /* color: #1A419d; */
+}
+
+h2 {
+  margin: 1.3em 0 0.2em 0;
+  padding: 0.5em 0 0.2em 0;
+  font-size: 1.35em;
+  /* letter-spacing: 10px; */
+  /* text-align: left; */
+  /* text-indent: 2em; */
+  /* color: #1A419d; */
+  /* background: #dac292; */
+}
+
+/* .body { */
+/*   /\* background: #e6e2d3; *\/ */
+/* }   */
+
+p {
+  margin-left: 1em;
+  margin-right: 5em;
+  width: 90%;
+  float: none;
+  display: block;
+  background: white;
+  text-align: left;
+}
+
+.sidebar {
+  margin-left: 2em;
+  padding: 0.5em 15px 15px 0;
+  width: 210px;
+  float: right;
+  text-align: left;
+}
+
+.sidebar h3 {
+  margin: 1em 0 0.5em 0;
+  font-size: 0.9em;
+  padding: 0.1em 0 0.1em 0.5em;
+  color: white;
+  border: 1px solid #86989B;
+  background-color: #AFC1C4;
+}
+
+.sidebar ul {
+  /* background: #c4b7a6; */
+  /* -webkit-transition: .5s; */
+  /* transition: .5s; */
+  /* margin: 1em 0 0.5em 0; */
+  /* font-size: 0.9em; */
+  /* padding: 0.1em 0 0.1em 0.5em; */
+  /* border: 1px solid #86989B; */
+  /* background-color: #AFC1C4; */
+  /* display: block; */
+  margin-top: -7px;
+  list-style: none;
+  padding-left: 8px;
+  /* line-height: 130%; */
+}
+    
+.sidebar li {
+  /* float: left; */
+  /* position: relative; */
+  width: 100%;
+  list-style: none;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.sidebar a {
+  display: inline-block;
+  white-space: nowrap;
+  text-decoration: none;
+  padding: 5px 15px;
+  /* color: black; */
+}
+
+.sidebar ul ul {
+  /* position: absolute; */
+  /* left: 0; */
+  /* top: 100%; */
+  /* visibility: hidden; */
+  /* opacity: 0; */
+  padding-left: 1.5em;
+  margin-top: 7px;
+  list-style: none;
+  padding-left: 8px;
+  line-height: 130%;
+}
+
+/* .sidebar ul ul ul { */
+/*   left: 100%; */
+/*   top: 0; */
+/* } */
+
+/* .sidebar ul ul ul ul { */
+/*   left: 100%; */
+/*   top: 0; */
+/* } */
+
+/* .sidebar li:hover, .sidebar li:hover li { */
+/* 		      background: #ddd; */
+/* 		    } */
+
+/* .sidebar li li:hover, .sidebar li li:hover li { */
+/* 			 background: #bbb; */
+/* 		       } */
+    
+/* .sidebar li li li:hover { */
+/*   background: #999; */
+/* } */
+
+/* .sidebar li li li:hover li { */
+/* 			 background: #bbb; */
+/* 		       } */
+
+/* .sidebar li li li li:hover, .sidebar li li li li:hover li { */
+/* 			 background: #bbb; */
+/* 		       } */
+
+/* .sidebar li li li li li:hover { */
+/*   background: #999; */
+/* } */
+
+/* .sidebar li:hover > ul { */
+/*   visibility: visible; */
+/*   opacity: 1; */
+/* } */
+
+/* Tooltip container */
+.lictip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+/* .lictip .lictiptext { */
+/*   visibility: hidden; */
+/*   width: 120px; */
+/*   background-color: black; */
+/*   color: #fff; */
+/*   text-align: center; */
+/*   padding: 5px 0; */
+/*   border-radius: 6px; */
+ 
+/*   /\* Position the tooltip text - see examples below! *\/ */
+/*   position: absolute; */
+/*   z-index: 1; */
+/* } */
+
+/* /\* Show the tooltip text when you mouse over the tooltip container *\/ */
+/* .lictip:hover .lictiptext { */
+/*   visibility: visible; */
+/* } */
+
+/* .AcknowledgeOuterDiv */
+/* { */
+/*   float: left; */
+/*   width: 100%; */
+/*   height: 300px; */
+/*   overflow: auto; */
+/* } */
+
+/* .AcknowledgeInnerDiv */
+/* { */
+/*   float: left; */
+/* } */
+
+
+/* .row.secondarymenubar { */
+/*     margin: 0 !important; */
+/* } */
+
+/* input#search_input{ */
+/*     margin: 0!important; */
+/*     width: 300px!important; */
+/*     font-size: initial; */
+/* } */
+/* a.active { */
+/*     background-color: #9696c6; */
+/*     color: white !important; */
+/* } */
+
+/* #menu a.active { */
+/*     background-color: #312F61; */
+/* } */
+
+/* .container { */
+/*     max-width: 2600px !important; */
+/*     min-width: 900px !important; */
+/* } */
+
+/* .row { */
+/*     margin-left: 0px !important; */
+/*     margin-right: 0px !important; */
+/* } */
+
+/* .container a { */
+/*     color: #3F51B5; */
+/*     font-weight: bold; */
+/* } */
+
+/* i.material-icons { */
+/*     vertical-align: middle; */
+/* } */
+
+/* footer.page-footer a, nav .container a{ */
+/*     color: #ffffff; */
+/* } */
+/* .tabs .tab a:hover { */
+/*     color: #9696c6; */
+/*     font-weight: 400; */
+/* } */
+
+/* .tabs .indicator { */
+/*     display: none; */
+/*     background-color: #9696c6; */
+/* } */
+
+/* .option img { */
+/*     margin-bottom: -10px; */
+/*     width: 32px; */
+/*     height: 32px; */
+/* } */
+
+/* .secondarymenubar { */
+/*     border-top: 2px solid #9696c6; */
+/*     clear: both; */
+/* } */
+
+/* div.clear { */
+/*     clear: both; */
+/* } */
+/* .secondarymenubar .secondarymenu.row { */
+/*     margin-top: 5px; */
+/*     margin-bottom: 0px; */
+/*     height: 45px; */
+/* } */
+
+/* .pvshelp { */
+/*     width: 100%; */
+/*     min-height: 1200px; */
+/* } */
+
+/* .pvsdoc { */
+/*     width: 50%; */
+/*     height: 580px; */
+/*     float: left; */
+/* } */
+/* .screenshot { */
+/*     width: 100%; */
+/*     min-height: 600px; */
+/* } */
+
+/* .indigo { */
+/*     margin-bottom: 2px !important; */
+/* } */
+
+/* .downloads-content { */
+/*   color: green; */
+/*   position: relative; */
+/*   display: inline-block; */
+/* } */

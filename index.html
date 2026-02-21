@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="Sam Owre"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="PVS Prototype Verification System" />
+<meta name="keywords" content="PVS Prototype Verification System theorem prover proving higher order logic subtypes"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="shortcut icon" href="images/pvslogo.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+  <link rel="stylesheet" type="text/css" href="css/fm-style.css" />
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/index.js"></script>
+  <!-- <script type="text/javascript" src="js/materialize.js"></script> -->
+  <!-- @ ANALYTIC@ -->
+  <!-- @ TIMINGS@ -->
+  <title>Prototype Verification System (PVS)</title>
+</head>
+
+<!-- <body onload="pvs_load_report()"> -->
+<body>
+  <div class="nav">
+<table class="relatives">
+<tr>
+<th><a href="index.html">Home</a></th>
+<th>&bull;</th>
+<th><a href="description.html">Description</a></th>
+<th>&bull;</th>
+<th><a href="documentation.html">Documentation</a></th>
+<th>&bull;</th>
+<th><a href="downloads.html">Downloads</a></th>
+<th>&bull;</th>
+<th><a href="support.html">Support</a></th>
+<th>&bull;</th>
+<th><a href="http://fm.csl.sri.com">FM&nbsp;Tools</a></th>
+</tr>
+</table>
+</div>
+
+  <div class="sidebar">
+<div class="localtoc">
+<p class="logo">
+<a href="#"><img width="200" height="110" src="images/pvslogo.gif" alt="PVS"/></a>
+</p>
+<h4>Download 7.1</h4>
+<ul>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86_64-Linux-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux Allegro', 'event_label' : '7.1.0'});"
+>
+Linux Allegro</a></li>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86-MacOSX-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX Allegro', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X Allegro</a> </li>
+<li><a href="downloads/pvs7.1.0-ix86_64-Linux-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux SBCL', 'event_label' : '7.1.0'});"
+>
+Linux SBCL</a></li>
+<li><a href="downloads/pvs7.1.0-ix86-MacOSX-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX SBCL', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X SBCL</a> </li>
+<li><a href="https://github.com/SRI-CSL/PVS">Github sources</a></li>
+<li><a href="downloads.html">All Downloads...</a></li>
+</ul>
+<h4><a href="downloads.html">Install 8.0 Beta</a></h4>
+<h4>NASA Additions</h4>
+<ul>
+<li><a href="https://shemesh.larc.nasa.gov/fm/pvs/PVS-library"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">NASA Library</a></li>
+<li><a href="https://github.com/nasa/vscode-pvs"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">VSCode PVS Plugin</a></li>
+</ul>
+<h4>Manuals</h4>
+<ul>
+<li><a href="doc/pvs-release-notes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Release Notes</a></li>
+<li><a href="doc/pvs-system-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">System Guide</a></li>
+<li><a href="doc/pvs-language-reference.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Language Reference</a></li>
+<li><a href="doc/pvs-prover-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Prover Guide</a></li>
+<li><a href="doc/datatypes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Datatypes</a></li>
+<li><a href="doc/interpretations.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Theory Interpretations</a></li>
+</ul>
+<h4>Patches</h4>
+<ul>
+<li><a href="pvs-patches/">List of available patches</a></li>
+<li><a href="pvs-patches/">How to install patches</a></li>
+</ul>
+</div>
+</div>
+  <div class="body">
+    
+    <h1>PVS</h1>
+    <p>
+      PVS is a mechanized environment for formal specification and
+      verification.  PVS consists of a specification language, a large
+      number of predefined theories, a type checker, an interactive
+      theorem prover that supports the use of several decision procedures
+      and a symbolic model checker, various utilities including a code
+      generator and a random tester, documentation, formalized libraries,
+      and examples that illustrate different methods of using the system
+      in several application areas. By exploiting the synergy between a
+      highly expressive specification language and powerful automated
+      deduction, PVS serves as a productive environment for constructing
+      and maintaining large formalizations and proofs.  See
+      the <a href="description.html">description</a> page for a summary of
+      the features of PVS, and
+      the <a href="documentation.html">documentation</a> page for full
+      details.
+    </p>
+    <p>
+      PVS builds on over 40 years of experience at SRI in developing and
+      using tools to support formal methods.  See
+      <a href="http://fm.csl.sri.com/">fm.csl.sri.com</a> for a description
+      of formal methods at SRI, and some of our formal methods tools.
+    </p>
+    
+    <h2>NASA and PVS</h2>
+    <p>
+      PVS has had many contributors over the years, but would probably not
+      even exist without the continuing support and encouragement from
+      the <a href="https://shemesh.larc.nasa.gov/fm/">
+      NASA Langley Formal Methods Research Program</a>.  They have been with
+      us from the beginning, and have put together a huge
+      <a href="https://shemesh.larc.nasa.gov/fm/pvs/PVS-library">library of PVS
+      theories</a> that are freely available. It is highly
+      recommended that you download and use these, both as libraries and as
+      examples of complex PVS specifications and proofs.
+      Many of the tools currently in PVS were developed by this
+      group. Check out the
+      <a href="https://shemesh.larc.nasa.gov/fm/pvs">link</a> for details
+      on PVS related research sponsored by NASA.  There you can even learn
+      about how the NASA PVS Library was featured in the movie <a href="
+      https://shemesh.larc.nasa.gov/fm/pvs/TheMartian/">"The Martian"</a>
+    </p>
+
+    <h2>How to get PVS</h2>
+    <p>
+      PVS 7.1 (<a href="doc/pvs-release-notes.pdf"
+		  target="_blank">release notes</a>)
+      is the current stable version of the tool. There are free versions
+      for Linux and Mac, for both Allegro and SBCL Common Lisp.  Allegro
+      has more features, and is generally quite a bit faster, but
+      requires acceptance of a click-through license. If you are a
+      commercial entity and you don't already have a PVS license (any
+      version), or have licensing questions, please contact us
+      at <a href="mailto:pvs-licensing@csl.sri.com">pvs-licensing@csl.sri.com</a>
+    </p>
+    <p>
+      PVS sources are available on <a href="https://github.com/SRI-CSL/PVS">Github</a>.
+    </p>
+  </div> <!-- end body -->
+  <div class="footer">
+    <footer class="page-footer"><hr />Last modified: <script>let lmod = new Date(document.lastModified);document.write(lmod.toDateString());</script>&nbsp; | &nbsp;Webmaster: <a href="mailto:owre@csl.sri.com">Sam Owre</a> &#149; <a href="mailto:shankar@csl.sri.com">N. Shankar</a> </footer>
+  </div>
+</body>
+</html>

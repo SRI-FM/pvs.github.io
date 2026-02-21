@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="Sam Owre"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="PVS Prototype Verification System" />
+<meta name="keywords" content="PVS Prototype Verification System theorem prover proving higher order logic subtypes"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="shortcut icon" href="images/pvslogo.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <link rel="shortcut icon" href="images/pvslogo.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="css/fm-style.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>PVS&trade; Evaluation</title>
+  </head>
+
+  <body>
+
+    <div class="nav">
+<table class="relatives">
+<tr>
+<th><a href="index.html">Home</a></th>
+<th>&bull;</th>
+<th><a href="description.html">Description</a></th>
+<th>&bull;</th>
+<th><a href="documentation.html">Documentation</a></th>
+<th>&bull;</th>
+<th><a href="downloads.html">Downloads</a></th>
+<th>&bull;</th>
+<th><a href="support.html">Support</a></th>
+<th>&bull;</th>
+<th><a href="http://fm.csl.sri.com">FM&nbsp;Tools</a></th>
+</tr>
+</table>
+</div>
+
+
+    <div class="sidebar">
+<div class="localtoc">
+<p class="logo">
+<a href="#"><img width="200" height="110" src="images/pvslogo.gif" alt="PVS"/></a>
+</p>
+<h4>Download 7.1</h4>
+<ul>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86_64-Linux-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux Allegro', 'event_label' : '7.1.0'});"
+>
+Linux Allegro</a></li>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86-MacOSX-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX Allegro', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X Allegro</a> </li>
+<li><a href="downloads/pvs7.1.0-ix86_64-Linux-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux SBCL', 'event_label' : '7.1.0'});"
+>
+Linux SBCL</a></li>
+<li><a href="downloads/pvs7.1.0-ix86-MacOSX-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX SBCL', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X SBCL</a> </li>
+<li><a href="https://github.com/SRI-CSL/PVS">Github sources</a></li>
+<li><a href="downloads.html">All Downloads...</a></li>
+</ul>
+<h4><a href="downloads.html">Install 8.0 Beta</a></h4>
+<h4>NASA Additions</h4>
+<ul>
+<li><a href="https://shemesh.larc.nasa.gov/fm/pvs/PVS-library"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">NASA Library</a></li>
+<li><a href="https://github.com/nasa/vscode-pvs"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">VSCode PVS Plugin</a></li>
+</ul>
+<h4>Manuals</h4>
+<ul>
+<li><a href="doc/pvs-release-notes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Release Notes</a></li>
+<li><a href="doc/pvs-system-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">System Guide</a></li>
+<li><a href="doc/pvs-language-reference.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Language Reference</a></li>
+<li><a href="doc/pvs-prover-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Prover Guide</a></li>
+<li><a href="doc/datatypes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Datatypes</a></li>
+<li><a href="doc/interpretations.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Theory Interpretations</a></li>
+</ul>
+<h4>Patches</h4>
+<ul>
+<li><a href="pvs-patches/">List of available patches</a></li>
+<li><a href="pvs-patches/">How to install patches</a></li>
+</ul>
+</div>
+</div>
+
+    <div class="body">
+
+      <h3>PVS Ground Evaluator</h3>
+
+      <p>
+	The PVS <i>ground evaluator</i> consists of a translator from an
+	executable subset of PVS into Common Lisp, a proof rule, and an
+	evaluation environment.  The subset of PVS which is handled by the
+	translation is large - the unexecutable fragments are uninterpreted
+	functions, non-bounded quantification, free variables, and
+	higher-order equalities.  However, the evaluation of expressions is
+	non-strict, so expressions may be evaluable even if they contain
+	non-evaluable sub-expressions.  You can see the code generated by
+	the translation for your theory with the Emacs command <tt>M-x pvs-lisp-theory</tt>.
+      </p>
+
+      <p>
+	The proof rule <tt>(eval)</tt> allows for the evaluation of ground
+	PVS expressions whilst in the prover.  Currently this has no effect
+	on the state of the proof, but simply displays the result of the
+	evaluation and otherwise acts like a <tt>(skip)</tt>.
+      </p>
+
+      <p>
+	The evaluation environment is invoked by the Emacs command <tt>M-x
+	<a href:"doc/PVSio-2.d.pdf>pvsio</a></tt>; you will be prompted for
+	a theory, defaulting to the one containing the cursor.  This is an
+	interactive read-eval-print loop that reads PVS expressions from the
+	user, translates them to Lisp, evaluates them, and returns the
+	results as PVS term.
+      </p>
+
+      <h3>Soundness and TCCs</h3>
+
+      <p>
+	The translation and evaluation assume that you have proven all TCCs
+	associated with the expression you are evaluating - including those
+	on declarations upon which the expression depends.  This allows for
+	greater execution speed, as the evaluation does not have to perform
+	runtime checks.
+      </p>
+
+      <p>
+	Evaluation in the presence of unproven TCCs is <b>unsound</b>, just
+	as proofs in the presence of unproven TCCs.  However, in the
+	evaluator the consequences can be more disastrous - you may crash
+	into the Lisp debugger (type <tt>(restore)</tt> to resume) or worse
+	may run out of stack space and kill the Lisp process.
+      </p>
+
+      <p>
+	When in the evaluation environment, the evaluator will display any
+	TCCs that were generated by typechecking the expression you
+	supplied.  You should inspect these carefully before answering yes
+	to continue the evaluation.  If you wish to confirm to yourself that
+	the TCCs are indeed provable, add the expression to be evaluated as
+	a constant to the theory: that is, instead of just typing
+	"factorial(-1)" to the evaluation environment (which generates an
+	unproveable TCC and causes an infinite loop if you proceed with the
+	evaluation anyway), add the declaration "crash : nat =
+	factorial(-1)" to the theory and evaluate "crash" only after the
+	TCCs have been proved (which is impossible in the case of that
+	example).
+      </p>
+
+      <h3>Evaluation Environment</h3>
+
+      <p>
+	The evaluation environment is started with the Emacs command <tt>M-x
+	pvsio</tt>.  You will be prompted for a theory name -
+	the evaluation then takes place logically after the last declaration
+	in that theory.
+      </p>
+
+      <p>
+	PVS expressions (enclosed in double quotes, e.g. <tt>"exists
+	(i:subrange(1,10)) : p(i)"</tt>) can now be typed to the
+	<tt>&lt;GndEval&gt;</tt> prompt.  These are parsed and typechecked
+	just as any other PVS expression, so you will get the standard
+	parsing / typechecking errors if you make a mistake.  The evaluator
+	will then print the result of the expression, or an error from the
+	translator or evaluator (see below).
+      </p>
+
+      <p>
+	The translation and compilation of PVS is performed lazily, ie on
+	demand, so the first use of a particular definition will cause the
+	evaluator to proceed more slowly than subsequent evaluations (note -
+	translation time is not included in any reported timings).
+      </p>
+
+      <p>
+	There are several commands that may be typed to the evaluator
+	(without quotes) that control its operation:
+      </p>
+
+      <table border="0">
+	<tr><td><tt>q</tt> or <tt>quit</tt></td>
+	  <td>quit the evaluator</td></tr>
+	<tr><td><tt>h</tt> or <tt>help</tt></td>
+	  <td>display list of commands and current settings</td></tr>
+	<tr><td><tt>timing</tt></td>
+	  <td>display timing information for each execution</td></tr>
+	<tr><td><tt>notiming</tt></td>
+	  <td>don't display timing information</td></tr>
+	<tr><td><tt>destructive</tt></td>
+	  <td>use destructive updates when possible</td></tr>
+	<tr><td><tt>nondestructive</tt></td>
+	  <td>don't use destructive evaluation</td></tr>
+	<tr><td><tt>convert</tt></td>
+	  <td>convert the result back into PVS syntax</td></tr>
+	<tr><td><tt>noconvert</tt></td>
+	  <td>don't convert the result back into PVS syntax</td></tr>
+	<tr><td><tt>verbose</tt></td>
+	  <td>enable some verbose compiler messages</td></tr>
+	<tr><td><tt>quiet</tt></td>
+	  <td>disable verbose compiler messages</td></tr>
+      </table>
+
+      <h3>Error Messages</h3>
+
+      <p>
+	<b>Hit uninterpreted term FOO during evaluation</b>: The evaluator
+	tried to evaluate a term (foo) for which there is no definition.
+	See "uninterpreted constants" in the PVS language guide.
+      </p>
+
+      <p>
+	<b>Typechecking FOO produced the following TCCs</b>: There were TCCs
+	generated from the expression (foo) you typed in.  Evaluation may be
+	unsound in the presence of unproven TCCs, or result in Lisp errors
+	(see above).
+      </p>
+
+      <p>
+	<b>FOO could not be translated: REASON</b>: The translation of
+	construct FOO into Lisp failed for the given reason.
+      </p>
+
+      <h3>Example</h3>
+
+      <pre>
+fac : THEORY
+BEGIN
+
+  factorial(i : nat) : RECURSIVE nat =
+    IF i = 0 THEN
+      1
+    ELSE
+      i * factorial(i - 1)
+    ENDIF
+  MEASURE i
+
+END fac
+
+
+&lt;GndEval&gt; "factorial(12)"
+; cpu time (non-gc) 0 msec user, 0 msec system
+; cpu time (gc)     0 msec user, 0 msec system
+; cpu time (total)  0 msec user, 0 msec system
+; real time  0 msec
+; space allocation:
+;  3 cons cells, 0 symbols, 0 other bytes, 0 static bytes
+==>
+479001600
+
+&lt;GndEval&gt; "factorial(120)"
+; cpu time (non-gc) 0 msec user, 0 msec system
+; cpu time (gc)     0 msec user, 0 msec system
+; cpu time (total)  0 msec user, 0 msec system
+; real time  0 msec
+; space allocation:
+;  3 cons cells, 0 symbols, 6,216 other bytes, 0 static bytes
+==>
+6689502913449127057588118054090372586752746333138029810295671352301633
+5572449629893668741652719849813081576378932140905525344085894081218598
+98481114389650005964960521256960000000000000000000000000000
+      </pre>
+
+      <h3>More Information</h3>
+
+      <p> See also the reports</p>
+      <ul>
+	<li>
+	  <a href="/papers/eval-report">Evaluating, Testing,
+	    and Animating PVS Specifications</a> for applications of the ground
+	  evaluator, and</li>
+	<li> <a
+	       href="http://research.nianet.org/~munoz/PVSio/">PVSio</a>, for an
+	  extension of the ground evaluator written by C&eacute;sar Mu&ntilde;oz.
+	  This has been integrated with PVS 4.0.  </li>
+      </ul>
+
+      <p>
+	Please send comments and feedback on the evaluator to
+	<a href="mailto:pvs-bugs@csl.sri.com">pvs-bugs@csl.sri.com</a>.
+      </p>
+
+    </div>
+    
+  </body>
+</html>
+

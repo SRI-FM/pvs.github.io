@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="author" content="Sam Owre"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="description" content="PVS Prototype Verification System" />
+<meta name="keywords" content="PVS Prototype Verification System theorem prover proving higher order logic subtypes"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<link rel="shortcut icon" href="images/pvslogo.png" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <link rel="stylesheet" type="text/css" href="css/fm-style.css" />
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script>
+     function gtagManual() {
+       gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});
+     }
+    </script>
+    <title>Predicate Abstraction in PVS&trade;</title>
+  </head>
+
+  <body>
+
+    <div class="nav">
+<table class="relatives">
+<tr>
+<th><a href="index.html">Home</a></th>
+<th>&bull;</th>
+<th><a href="description.html">Description</a></th>
+<th>&bull;</th>
+<th><a href="documentation.html">Documentation</a></th>
+<th>&bull;</th>
+<th><a href="downloads.html">Downloads</a></th>
+<th>&bull;</th>
+<th><a href="support.html">Support</a></th>
+<th>&bull;</th>
+<th><a href="http://fm.csl.sri.com">FM&nbsp;Tools</a></th>
+</tr>
+</table>
+</div>
+
+    
+    <div class="sidebar">
+<div class="localtoc">
+<p class="logo">
+<a href="#"><img width="200" height="110" src="images/pvslogo.gif" alt="PVS"/></a>
+</p>
+<h4>Download 7.1</h4>
+<ul>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86_64-Linux-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux Allegro', 'event_label' : '7.1.0'});"
+>
+Linux Allegro</a></li>
+<li><a href="license.html?tgzfile=pvs7.1.0-ix86-MacOSX-allegro.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX Allegro', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X Allegro</a> </li>
+<li><a href="downloads/pvs7.1.0-ix86_64-Linux-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'Linux SBCL', 'event_label' : '7.1.0'});"
+>
+Linux SBCL</a></li>
+<li><a href="downloads/pvs7.1.0-ix86-MacOSX-sbclisp.tgz"
+onclick="gtag('event', 'Download', { 'event_category' : 'MacOSX SBCL', 'event_label' : '7.1.0'});"
+>
+Mac&nbsp;OS&nbsp;X SBCL</a> </li>
+<li><a href="https://github.com/SRI-CSL/PVS">Github sources</a></li>
+<li><a href="downloads.html">All Downloads...</a></li>
+</ul>
+<h4><a href="downloads.html">Install 8.0 Beta</a></h4>
+<h4>NASA Additions</h4>
+<ul>
+<li><a href="https://shemesh.larc.nasa.gov/fm/pvs/PVS-library"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">NASA Library</a></li>
+<li><a href="https://github.com/nasa/vscode-pvs"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">VSCode PVS Plugin</a></li>
+</ul>
+<h4>Manuals</h4>
+<ul>
+<li><a href="doc/pvs-release-notes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Release Notes</a></li>
+<li><a href="doc/pvs-system-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">System Guide</a></li>
+<li><a href="doc/pvs-language-reference.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Language Reference</a></li>
+<li><a href="doc/pvs-prover-guide.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Prover Guide</a></li>
+<li><a href="doc/datatypes.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Datatypes</a></li>
+<li><a href="doc/interpretations.pdf"
+onclick="gtag('event', 'Download', { 'event_category' : 'Manual', 'event_label' : '7.1.0'});">Theory Interpretations</a></li>
+</ul>
+<h4>Patches</h4>
+<ul>
+<li><a href="pvs-patches/">List of available patches</a></li>
+<li><a href="pvs-patches/">How to install patches</a></li>
+</ul>
+</div>
+</div>
+
+    <div class="body">
+      <h1>Predicate Abstraction in PVS</h1>
+
+      <p>
+	The command <tt>abstract</tt> implements an abstract compiler for
+	PVS assertions based on boolean abstractions. Given a state type
+	<tt>STATE</tt> defined as a record type and a set of state predicates
+	<tt>(pred_1 ...  pred_k)</tt>, an abstract state type <tt>ABS_STATE</tt>
+	is defined. It consists of a record type with k boolean components
+	and the remaining components of the <tt>STATE</tt> that are not
+	referenced in the predicates <tt>(pred_1 ... pred_k)</tt>. The
+	abstraction command translates any PVS assertion over variables of
+	type <tt>STATE</tt> to a stronger assertion over variables of type
+	<tt>ABS_STATE</tt>.
+      </p>
+
+      <p>
+	Syntax: <tt>(abstract (pred_1 ... pred_k) &amp;optional cases-rewrite? [T] exclusive? proof-counter)</tt>
+      </p>
+
+      <p>
+	<b>Effect</b>: The abstract command creates a new subgoal where the
+	selected formulae are translated using the abstract compiler defined
+	by a list of predicates.  The command abstract rewrites all
+	definitions, including constant definitions such as the temporal
+	operator of the logic CTL. It then invokes the basic command
+	abs-simp which implements the abstract compiler. The command
+	abs-simp assumes that all definitions have been rewritten.
+      </p>
+
+      <p>
+	The list <tt>(pred_1 ... pred_k)</tt> is a list of state predicates of
+	the form <tt> lambda(s:state):P(s)</tt>, where <tt>P(s)</tt> is any
+	predicate expressible in the PVS assertions language.
+      </p>
+
+      <p>
+	The parameter cases-rewrite? can be set to nil to avoid rewriting and
+	simplification within unresolved selections within CASES expressions for
+	the sake of efficiency.
+      </p>
+
+      <p>
+	The parameter exclusive? indicates weather the abstraction
+	predicates are exclusive. This allows a more efficient computation
+	of the abstraction.
+      </p>
+
+      <p>
+	The parameter proof-counter indicates the maximal number of calls to
+	the decision procedure when abstracting each atom of the sequent.
+	Any number allows to compute a faithful abstraction. However, it is
+	preferable that the number is at least equal twice the length of the
+	list of predicates.
+      </p>
+
+      <p>
+	<b>errors</b>: There are mainly two reasons for which the command
+	can not be applied:
+      </p>
+
+      <ul>
+	<li>
+	  The first one is when one of the predicates does not satisfy the
+	  condition given in section In this case the original goal is
+	  returned.
+	  <ul>
+	    <li> P is not a predicate.</li>
+	    <li> Predicate P has free variables.</li>
+	    <li> State predicates have different domains.</li>
+	  </ul>
+	</li>
+
+	<li>
+	  The second reason is when one of the selected formula contains
+	  variables which are not of type state.  In this case the original
+	  goal is also returned.
+	</li>
+      </ul>
+
+      <p>
+	The current use of the command <tt>abstract</tt> consists in using
+	the following proof strategy:
+      </p>
+
+      <pre>
+    (defstep abstract-and-mc (list-state-predicates)
+	 (try (abstract list-state-predicates) (musimp) (skip))
+     "abstract-and-mc"
+     "Interpret using boolean abstraction 
+       and prove by model-checking!")</pre>
+
+      <p>
+	The proof strategy applies successively the command <tt>abstract</tt>
+	and the command <tt>musimp</tt>, only if the command abstract
+	produces a modified subgoal. Otherwise the proof strategy has no
+	effect.
+      </p>
+
+      <p>
+	<b>Example</b>: Consider the following state type: <tt> state : TYPE
+	  [# pc : control ; y1,y2: nat #]</tt> where control is an enumerated type
+	<tt> control : TYPE = {idle, wait, enter, exit}</tt> Consider a
+	boolean abstraction defined with the predicate <tt> lamda(s:state):
+	  y1(s)=y2(s)</tt> This defines the abstract state type <tt> abs_state :
+	  TYPE [# pc : control; B_1 : boolean #] </tt>
+      </p>
+
+      <p>
+	The assertion <tt> pc(state1)= idle and state2= state1 with [ pc :=
+	wait ; y1 := y2(state1)+1 ]</tt> is abstracted to <tt>
+	idle?(pc(abs_state1)) and pc(abs_state2)=wait and not
+	B_1(abs_state_2)</tt>
+      </p>
+
+      <p>
+	<b>References</b>: <a href="http://www.csl.sri.com/papers/saidicav/">
+	  Abstract and Model Check while you prove</a> by Hassen Saidi and
+	Natarajan Shankar describes the implementation of the abstraction
+	command.  This is in the proceedings of the International Conference
+	on Computer-Aided Verification (CAV99), Trento, Italy, Jul 7-10,
+	1999.
+      </p>
+    </div>
+    </div>
+    <footer class="page-footer"><hr />Last modified: <script>let lmod = new Date(document.lastModified);document.write(lmod.toDateString());</script>&nbsp; | &nbsp;Webmaster: <a href="mailto:owre@csl.sri.com">Sam Owre</a> &#149; <a href="mailto:shankar@csl.sri.com">N. Shankar</a> </footer>
+  </body>
+</html>
